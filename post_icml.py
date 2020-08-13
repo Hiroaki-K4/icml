@@ -24,7 +24,7 @@ def main():
         
     all_message = []
     for word in random_list:
-        # word_list.remove(word)
+        word_list.remove(word)
         attachments_title = []
         attachments_contents = []
         paper_title = {"title": word[0],
