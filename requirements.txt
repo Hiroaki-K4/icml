@@ -32,6 +32,7 @@ rfc3986==1.4.0
 rsa==4.6
 selenium==3.141.0
 six==1.15.0
+slackweb==1.0.5
 sniffio==1.1.0
 soupsieve==2.0.1
 tqdm==4.48.2

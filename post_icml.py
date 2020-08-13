@@ -1,7 +1,9 @@
 import os
 import csv
+import time
 import random
 import tempfile
+import slackweb
 from google.cloud import storage
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"]=''
 
@@ -22,11 +24,19 @@ def main():
         
     all_message = []
     for word in random_list:
-        word_list.remove(word)
-        info = {"title": word[0], "text": word[1], "title": word[2], "text": word[3]}
-        all_message.append(info)
-    slack = slackweb.Slack(url="")
-    slack.notify(attachments=all_message)
+        # word_list.remove(word)
+        attachments_title = []
+        attachments_contents = []
+        paper_title = {"title": word[0],
+                "text": word[1]}
+        paper_contents = {"title": word[2],
+                "text": word[3]}
+        attachments_title.append(paper_title)
+        attachments_contents.append(paper_contents)
+        slack = slackweb.Slack(url="https://hooks.slack.com/services/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")
+        slack.notify(attachments=attachments_title)
+        slack.notify(attachments=attachments_contents)
+        time.sleep(1)
 
     with tempfile.TemporaryDirectory() as temp_path:
         write_path = temp_path + '/icml_edit.csv'
