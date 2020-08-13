@@ -1,3 +1,4 @@
+import csv
 import requests
 from bs4 import BeautifulSoup
 from selenium import webdriver
@@ -35,8 +36,9 @@ def main():
             paper_all_list.append(paper_list)
             driver.quit()
 
-    print(paper_all_list)
-    input()
+    with open('/home/hiroaki-k4/icml.csv', 'w') as file:
+        writer = csv.writer(file, lineterminator='\n')
+        writer.writerows(paper_all_list)
 
 
 if __name__ == '__main__':
